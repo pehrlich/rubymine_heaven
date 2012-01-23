@@ -5,7 +5,7 @@ module RubymineHeaven
         Rails.backtrace_cleaner.remove_filters!
         Rails.backtrace_cleaner.add_filter { |line| line.sub("#{Rails.root}/", '') }
 
-        # point links on error pages to rubymine
+        # point links on rails error pages to rubymine
         ActionDispatch::ShowExceptions.send(:include, LinkableErrors)
 
         # point footnotes links to rubymine

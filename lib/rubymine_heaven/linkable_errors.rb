@@ -8,7 +8,7 @@ module RubymineHeaven
 
         def link_to_code(text)
           # we must create new String, because SafeBuffer#gsub don't set $1, $2, ... variables !!
-          String.new(text).gsub(/(\/?[\w\/\.-]+)\:(\d+)/) do |match|
+          String.new(text).gsub(/(\/?[\w\/\.@-]+)\:(\d+)/) do |match|
             file = $1 || "file??"
             line = $2 || "line-no??"
             file = Rails.root + file if file =~ Rails::BacktraceCleaner::APP_DIRS_PATTERN

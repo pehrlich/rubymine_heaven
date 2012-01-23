@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 arg_line = ARGV[0]
-puts arg_line
 
 if /x-mine:\/\/open\?(.*)/ =~ arg_line
   parts = $1.split("&")
