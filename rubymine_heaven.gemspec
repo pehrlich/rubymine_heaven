@@ -8,9 +8,11 @@ Gem::Specification.new do |s|
   s.authors     = ["Petr Cervinka"]
   s.email       = ["petr@petrcervinka.cz"]
   s.homepage    = ""
-  s.summary     = %q{Rails gem form pleasant development with InteliJ RubyMine}
-  s.description = %q{This gem integrates rails3-footnotes with RubyMine so footnetes's links are opened by Rubymine. It also connects stack trace lines
-    in development mode with RubyMine. You need some manual work to set handler for browser links (see README).'}
+  s.summary     = %q{Rails gem for pleasant development with InteliJ RubyMine}
+  s.description = %q{This gem connects stack trace on rails error page to rubymine (when you click on stack trace line
+in browser, RubyMine will open appropriate file on the line which caused the error. In similar manner it connects links
+from footnotes (if present) to RubyMine (https://github.com/josevalim/rails-footnotes). You need some manual work to set
+handler for browser links (see README).'}
 
   s.rubyforge_project = "rubymine_heaven"
 

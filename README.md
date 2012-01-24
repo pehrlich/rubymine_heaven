@@ -2,8 +2,8 @@
 
 This gem does 2 things:
 
-* points links on rails error pages to rubymine
-* points links from footnotes (if present) to RubyMine (https://github.com/josevalim/rails-footnotes)
+* connects stack trace on rails error page to rubymine (when you click on stack trace line in browser, RubyMine will open appropriate file on the line which caused the error
+* in similar manner it connects links from footnotes (if present) to RubyMine (https://github.com/josevalim/rails-footnotes)
 
 ## Getting started
 
@@ -37,7 +37,7 @@ that's all...
 ## Prerequisites
 
 * Mac OS X
-* IntelliJ RubyMine
+* IntelliJ RubyMine (http://www.jetbrains.com/ruby/index.html)
 
 ## Bugs and Feedback
 
@@ -47,6 +47,10 @@ If you discover any bugs, please send an e-mail to petr@petrcervinka.cz. Positiv
 
 If someone knows how to eliminate the need to create ApplScript handler (or how to create this handler programaticaly),
 or how to register new protocol programitacly, please let me know.
+
+## References
+
+https://rubygems.org/gems/rubymine_heaven
 
 ## License
 
