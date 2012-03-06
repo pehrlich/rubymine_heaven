@@ -38,6 +38,7 @@ that's all...
 
 * Mac OS X
 * IntelliJ RubyMine (http://www.jetbrains.com/ruby/index.html)
+* Rails >= 3.2 (for older Rails please use version 0.0.2)
 
 ## Bugs and Feedback
 

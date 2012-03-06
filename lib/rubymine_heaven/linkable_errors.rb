@@ -6,6 +6,7 @@ module RubymineHeaven
 
         private
 
+
         def link_to_code(text)
           # we must create new String, because SafeBuffer#gsub don't set $1, $2, ... variables !!
           String.new(text).gsub(/(\/?[\w\/\.@-]+)\:(\d+)/) do |match|
@@ -16,21 +17,37 @@ module RubymineHeaven
           end
         end
 
-        def rescue_action_locally(request, exception)
-          template = ActionView::Base.new([RESCUES_TEMPLATE_PATH],
-                                          :request => request,
-                                          :exception => exception,
-                                          :application_trace => application_trace(exception),
-                                          :framework_trace => framework_trace(exception),
-                                          :full_trace => full_trace(exception)
-          )
-          file = "rescues/#{@@rescue_templates[exception.class.name]}.erb"
-          body = template.render(:file => file, :layout => 'rescues/layout.erb')
-          body = link_to_code(body)
-          render(status_code(exception), body)
-        end
-      end
+        def render_exception(env, exception)
 
+          begin
+            wrapper = ActionDispatch::ExceptionWrapper.new(env, exception)
+            log_error(env, wrapper)
+
+
+            if env['action_dispatch.show_detailed_exceptions']
+              template = ActionView::Base.new([RESCUES_TEMPLATE_PATH],
+                                              :request => ActionDispatch::Request.new(env),
+                                              :exception => wrapper.exception,
+                                              :application_trace => wrapper.application_trace,
+                                              :framework_trace => wrapper.framework_trace,
+                                              :full_trace => wrapper.full_trace
+              )
+
+              file = "rescues/#{wrapper.rescue_template}"
+              body = template.render(:template => file, :layout => 'rescues/layout')
+              body = link_to_code(body)
+
+              render(wrapper.status_code, body)
+            else
+              raise exception
+            end
+          rescue => e
+            p e
+
+          end
+        end
+
+      end
     end
   end
 
